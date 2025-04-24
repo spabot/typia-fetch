@@ -1,15 +1,15 @@
-import { type FetchHandler, UnhandledResponseError } from "..";
+import { type IHeaders, type FetchHandler, UnhandledResponseError } from "..";
 import PLazy from "p-lazy";
 
 export async function fetchMatch<T>(
   resp: Response,
   ...handlers: FetchHandler<T>[]
 ): Promise<T> {
-  const headers = {
-    ":code": resp.status.toString(),
-    ":text": resp.statusText,
-    ":url": resp.url,
-    ...resp.headers.toJSON(),
+  const headers: IHeaders = {
+    url: new URL(resp.url),
+    code: resp.status,
+    text: resp.statusText,
+    headers: resp.headers.toJSON(),
   };
 
   const body = PLazy.from(() => resp.text());

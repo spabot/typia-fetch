@@ -13,7 +13,7 @@ try {
     resp,
     fetchIs(
       typia.createIs<{
-        ":code": "429";
+        ":code": 429;
         ":text": "Too Many Requests";
       }>(),
       // Body is not downloaded
@@ -21,7 +21,10 @@ try {
     ),
     fetchIsBody(
       typia.createIs<{
-        ":code": "200";
+        ":url": {
+          pathname: "/location";
+        };
+        ":code": 200;
         ":text": "OK";
         "content-type": "application/json";
       }>(),

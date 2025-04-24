@@ -7,10 +7,11 @@ export class UnhandledResponseError extends Error {
   }
 }
 
-export interface IHeaders extends Record<string, string> {
-  ":code": string;
-  ":text": string;
-  ":url": string;
+export interface IHeaders {
+  url: URL;
+  code: number;
+  text: string;
+  headers: Record<string, string>;
 }
 
 export type FetchHandler<T> = (
