@@ -2,34 +2,7 @@
 
 ## Example
 
-```typescript
-import typiaFetch, { UnhandledResponseError } from 'typia-fetch';
-import typia from 'typia'
-
-const resp = await fetch('https://ip.oxylabs.io/location');
-
-try {
-    const result = typiaFetch(
-        resp,
-        {
-            headers: typia.createValidate<{
-
-            }>()
-        },
-        {
-        }
-    );
-} catch (err: unknown) {
-    if (err instanceof UnhandledResponseError) {
-        console.info({
-            response: err.response,
-            responseBody: err.responseBody ?? (await err.response.text())
-        })
-        return;
-    }
-    throw err;
-}
-```
+* [examples/basic.ts](examples/basic.ts)
 
 ## Appendix
 
