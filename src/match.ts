@@ -8,6 +8,7 @@ export async function fetchMatch<T>(
   const headers = {
     ":code": resp.status.toString(),
     ":text": resp.statusText,
+    ":url": resp.url,
     ...resp.headers.toJSON(),
   };
 
