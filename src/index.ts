@@ -8,7 +8,7 @@ export class UnhandledResponseError extends Error {
 }
 
 export interface IHeaders {
-  url: URL;
+  urlQuery: Record<string, string>;
   code: number;
   text: string;
   headers: Record<string, string>;

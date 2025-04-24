@@ -5,8 +5,9 @@ export async function fetchMatch<T>(
   resp: Response,
   ...handlers: FetchHandler<T>[]
 ): Promise<T> {
+  const url = new URL(resp.url);
   const headers: IHeaders = {
-    url: new URL(resp.url),
+    urlQuery: Object.fromEntries(url.searchParams.entries()),
     code: resp.status,
     text: resp.statusText,
     headers: resp.headers.toJSON(),
